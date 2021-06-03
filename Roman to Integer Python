@@ -1,0 +1,24 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        r = ["I","V","X","L","C","D","M"]
+        v= [1,5,10,50,100,500,1000]
+        l = len(r) - 1
+        result = 0
+        for c in s:
+            index = 0
+            for x in r:
+                if x != c:
+                    index += 1
+                else:
+                    break
+            if index > l:
+                result -= 2*v[l]
+                result += v[index]
+            else:
+                result += v[index]
+            l=index
+        return result
