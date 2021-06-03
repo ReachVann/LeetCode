@@ -1,0 +1,31 @@
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        result1=0
+        Max_Int = (2**31)-1
+        Max_Int_Neg=-2**31
+        if (x >= Max_Int_Neg) and (x <= Max_Int):
+            n = abs(x)
+            if n > 0:
+                while n != 0:
+                    res = n % 10
+                    if n >= 10:
+                        result1 = (result1 + res) * 10
+                        n=int(n/10)
+                    else:
+                        result1 = result1 + res
+                        n=int(n/10)
+            else:
+                return 0
+            if result1 > Max_Int or result1 < Max_Int_Neg:
+                return 0
+            else:
+                if x < 0:
+                    return -(result1)
+                else:
+                    return result1   
+        else:
+            return 0   
