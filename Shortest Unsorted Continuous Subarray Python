@@ -1,0 +1,22 @@
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        end = 0
+        l1 = sorted(nums)
+        start = 0
+        if l1 == nums:
+            return 0
+        
+        for x in range(len(nums) - 1, -1, -1):
+            if nums[x] != l1[x]:
+                end = x
+                break
+        for y in range(len(nums) - 1):
+            if nums[y] != l1[y]:
+                start = y
+                break
+        
+        return end - start + 1
