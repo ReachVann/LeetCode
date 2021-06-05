@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int h=matrix.size();
+        int l=matrix[0].size();
+        int lbound=0,rbound=l-1,dbound=h-1,tbound=0;
+        int arrow=0;
+        vector<int> v;
+        while(lbound <= rbound and tbound <= dbound){
+            if(arrow == 0){
+                for(int i = lbound; i <= rbound; i++){
+                    v.push_back(matrix[tbound][i]);
+                }
+                tbound++;
+                arrow = 1;
+            }
+            else if(arrow == 1){
+                for(int i = tbound; i <= dbound; i++){
+                    v.push_back(matrix[i][rbound]);
+                }
+                rbound--;
+                arrow = 2;
+            }
+            else if(arrow == 2){
+                for(int i = rbound; i >= lbound; i--){
+                    v.push_back(matrix[dbound][i]);
+                }
+                dbound--;
+                arrow = 3;
+            }
+            else if(arrow == 3){
+                for(int i = dbound; i >= tbound; i--){
+                    v.push_back(matrix[i][lbound]);
+                }
+                lbound++;
+                arrow=0;
+            }
+        }
+        return v;
+        
+    }
+};
