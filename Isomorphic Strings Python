@@ -1,0 +1,20 @@
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        dic = {}
+        if len(s) != len(t):
+            return False
+        for x in range(len(s)):
+            if not s[x] in dic:
+                if t[x] in dic.values():
+                    return False
+                dic[s[x]] = t[x]
+        for x,y in enumerate(s):
+            if dic[y] != t[x]:
+                return False
+    
+        return True
