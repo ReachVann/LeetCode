@@ -1,0 +1,10 @@
+class Solution {
+public:
+    vector<int> constructRectangle(int area) {
+        int x = sqrt(area);
+        while(area%x){
+            x--;
+        }
+        return{area/x,x};
+    }
+};
