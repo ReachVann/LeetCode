@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string l1 = "";
+        for(int i = 0;i < s.size();++i){
+            if (isalnum(s[i])){
+                l1 += tolower(s[i]);
+            }
+            else{
+                continue;
+            }
+            
+        }
+        for(int x = 0; x < (l1.size())/2; ++x){
+            if (l1[x] != l1[l1.size()-1-x]) return false;
+        }
+        return true;
+    }
+};
