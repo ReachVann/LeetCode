@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int singledigits(int x){
+        int sum = 0;
+        while (x != 0){
+            sum += x%10;
+            x = x/10;
+        }
+        return sum;
+    }
+    int addDigits(int num) {
+        if (num < 10){
+            return num;
+        }
+        return (addDigits(singledigits(num)));
+    }
+};
