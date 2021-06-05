@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isAlienSorted(vector<string>& words, string order) {
+        unordered_map<char, int> val;
+        for(int i = 0; i < order.size(); i++){
+            val[order[i]] = i;
+        }
+        for(int i = 1; i < words.size(); i++){
+            string curr = words[i-1];
+            string next = words[i];
+            
+            bool smallest = curr.size() <= next.size();
+            bool equiv = true;
+            int n = (smallest ? curr.size() : next.size());
+            for(int i = 0; i < n; i++){
+                if(val[curr[i]] < val[next[i]]){
+                    equiv = false;
+                    break;
+                }
+                else if(val[curr[i]]==val[next[i]]){
+                    continue;
+                }
+                else{
+                    return false;
+                }
+            }
+            if(equiv and !smallest){
+                return false;
+            }
+        }
+        return true;
+    }
+};
